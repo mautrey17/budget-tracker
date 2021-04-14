@@ -49,7 +49,7 @@ self.addEventListener("fetch", function(evt) {
   if (evt.request.url.includes("/api/")) {
     evt.respondWith(
       caches.open(DATA_CACHE_NAME).then(cache => {
-        //   console.log(evt.request)
+          console.log('here')
         return fetch(evt.request)
           .then(response => {
             // If the response was good, clone it and store it in the cache.
