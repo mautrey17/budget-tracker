@@ -1,12 +1,14 @@
+const indexedDB = window.indexedDB;
 let db;
 // create a new db request for a "budget" database.
 const request = indexedDB.open('budget', 1)
 
 request.onupgradeneeded = function (event) {
   // create object store called "pending" and set autoIncrement to true
-  const pendingStore = db.createObjectStore('pending', { keyPath: 'id', autoIncrement: true})
+  const db = event.target.result;
+  db.createObjectStore('pending', {autoIncrement: true})
 
-  pendingStore.createIndex('nameIndex', 'name')
+//   pendingStore.createIndex('nameIndex', 'name')
 };
 
 request.onsuccess = function (event) {
@@ -24,7 +26,6 @@ request.onerror = function (event) {
 
 function saveRecord(record) {
   // create a transaction on the pending db with readwrite access
-  const db = request.result;
 
   const transaction = db.transaction(['pending'], 'readwrite');
   // access your pending object store
@@ -35,15 +36,15 @@ function saveRecord(record) {
 
 function checkDatabase() {
   // open a transaction on your pending db
-  const db = request.result;
+//   const db = request.result;
 
   const transaction = db.transaction(['pending'], 'readwrite');
-  const nameIndex = pendingStore.index('nameIndex')
+//   const nameIndex = pendingStore.index('nameIndex')
   // access your pending object store
   const pendingStore = transaction.objectStore('pending')
   // get all records from store and set to a variable
 
-  const getAll = nameIndex.getAll();
+  const getAll = pendingStore.getAll();
 
   getAll.onsuccess = function () {
     if (getAll.result.length > 0) {
@@ -60,7 +61,7 @@ function checkDatabase() {
           // if successful, open a transaction on your pending db
           // access your pending object store
           // clear all items in your store
-          const db = request.result;
+        //   const db = request.result;
 
           const transaction = db.transaction(['pending'], 'readwrite');
           const pendingStore = transaction.objectStore('pending');
