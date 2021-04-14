@@ -9,8 +9,8 @@ const FILES_TO_CACHE = [
   ];
 
 //cache names
-const CACHE_NAME = "app-cache-v2";
-const DATA_CACHE_NAME = "app-cache-v1";
+const CACHE_NAME = "budget-cache-v2";
+const DATA_CACHE_NAME = "budget-cache-v1";
 
 // install
 self.addEventListener("install", function(evt) {
