@@ -21,7 +21,6 @@ self.addEventListener("install", function(evt) {
     })
   );
 
-  self.skipWaiting();
 });
 
 //activate
