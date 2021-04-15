@@ -58,7 +58,7 @@ This application has offline functionality to allow users to update their budget
 ## Installation
 In order to install the application, follow these steps: 
 
-Go to the link
+Go to the link: https://unc-budget-tracker.herokuapp.com/
 
 ## Usage
 This application can be downloaded as a PWA
